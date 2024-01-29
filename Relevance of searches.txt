@@ -1,0 +1,40 @@
+Search relevance is based on 
+PERCISION and RECALL
+
+Elasticsearch stores data as DOCUMENTS.
+
+DOCUMENTS with similar traits are grouped into an INDEX.
+
+TRUE POSITIVES is what you expect to receive in a response.
+
+If a result is not relevant it is called a FALSE POSITIVE.
+
+Some irrelevant ducuments are not returned by the search - they care TRUE NEGATIVES.
+
+There is also FALSE NEGATIVES - results that should have been relevant but they were not returned.
+
+A good way to measure percision is TRUE POSITIVES / TRUE POSITIVIES + FALSE POSITIVES.
+
+Percision is = TRUE POSITIVES / TRUE POSITIVES + FALSE POSITIVES
+
+By PERCISION we mean the amount of data that is actually relevant to your search.
+
+RECALL is TRUE POSITIVES / TRUE POSITVIES + FALSE NEGATIVES
+
+RECALL tells you what portion of relevant data is being returned as serach results?
+
+PERCISION wants all the retrieved results to MATCH the query - to be percise.
+
+RECALL is about VOLUME says I want to retrieve more results even if documents may not be a perfect match to the query.
+
+WE KIND OF WANT BOTH PERCISION AND RECALL
+
+True search result QUALITY is determined by RANKING
+
+A SCORE tells us how relevant a document is to a search
+
+TERM FREQUENCY plays a role calculating score.
+
+Elasticsearch checks how many times a Search term is mentioned in a document. The more serach terms appear the better.
+
+Term frequency is a good start but it is not everything. Frequency considers all words to have equal value. That is why if you search for HOW TO...do something anything that says HOW TO often will be returned.

@@ -1,0 +1,118 @@
+WHAT HAPPENS WHEN YOU ADD DATA TO KIBANA
+
+It analyzes the first 1000 lines
+There is some data at the bottom.
+
+BUT you have to hit the import button to import the data into Elasticserach working with cloud.
+
+When you hit IMPORT you made an INDEX called news headlines.
+
+GET news_headlines/_search
+This GET give you info on your data and a sample of 10 search results by default.
+
+Elastic Search limits total value to 10000 as a default
+
+HOW TO KNOW EXACT TOTAL NUMBER OF HITS
+
+GET news_headlines/_search
+{
+  "track_total_hits": true
+}
+
+QUERIES AND AGGREGATIONS are 2 ways to search in elasticsearch
+
+QUERIES are used to retrieve documents that meet the criteria that you place.
+
+AGGREGATIONS summerize your data as metrics, statistics, and other analytics.
+
+SEARCH BETWEEN 2 DATES
+
+GET news_headlines/_search
+{
+  "query": {
+    "range":{
+      "date":{
+        "gte": "2015-06-20",
+        "lte": "2015-09-22"
+      }
+    }
+  }
+}
+
+GTE means greater than or exact
+
+
+NOW HERE IS AN ACTUAL AGGREGATE SEARCH BY 100 CATEGORIES
+
+GET news_headlines/_search
+{
+  "aggs": {
+    "by_category": {
+      "terms": {
+        "field": "category",
+        "size": 100
+      }
+    }
+  }
+}
+
+LOOKING AT THE ENTERTAINMENT CATEGORY IN GREATER DETAIL
+
+GET news_headlines/_search
+{
+  "query": {
+    "match": {
+      "category": "ENTERTAINMENT"
+    }
+  },
+  "aggregations": {
+    "popular_in_entertainment": {
+      "significant_text": {
+        "field": "headline"
+      }
+    }
+  }
+}
+
+if you run this below it will find too many results
+
+
+GET news_headlines/_search
+{
+  "query": {
+    "match": {
+      "headline": {
+        "query": "Khloe Kardashian Kendall Jenner"
+      }
+    }
+  }
+}
+
+BUT YOU CAN ADD AND--containing all 4 search terms
+BUT THIS IS EXTREMELY STRICT
+
+GET news_headlines/_search
+{
+  "query": {
+    "match": {
+      "headline": {
+        "query": "Khloe Kardashian Kendall Jenner",
+        "operator": "and"
+      }
+    }
+  }
+}
+
+HERE IS KIND OF A MIDDLE DOWN THE ROAD GOOD OPTION
+
+GET news_headlines/_search
+{
+  "query": {
+    "match": {
+      "headline": {
+        "query": "Khloe Kardashian Kendall Jenner",
+        "minimum_should_match": 3
+      }
+    }
+  }
+}

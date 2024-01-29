@@ -1,0 +1,155 @@
+VIDEO 3
+
+A scoring algorith assigns a higher score to more relevant results and lesser scores to less relevant results.
+
+Previous workshop is basic queries
+
+the MATCH query returns just about anything where you can find the serach terms, even if the words are spread apart and 3 search terms are not all found together. 
+
+MATCH might pull up documents with search terms that are scattered across the document. This may not always be what we want.
+
+BUT there is a MATCH PHRASE quary which searches for greater details.
+
+MATCH PHRASE TRIES TO FIND THE ENTIRE PHRASE
+
+The Question of the day is
+
+FULL TEXT QUERIES
+
+COMBINED QUERIES
+
+FINE TUNE THE RELEVANCE OF RESULTS
+
+
+BOOL QUERIES HAVE MUST, MUST NOT, SHOULD, FILTER
+
+THESE ARE ALL OPTIONAL QUERIES.
+
+PERCISION AND RECALL MATTER
+
+GET news_headlines/_search
+
+GET news_headlines/_search
+{
+  "aggregations": {
+    "by_category": {
+      "terms": {
+        "field": "category",
+        "size": 100
+      }
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "match_phrase": {
+      "headline": {
+        "query": "Shape of you"
+      }
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "Michelle Obama",
+      "fields": [
+        "headline",
+        "short_description",
+        "authors"
+      ]
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "party planning",
+      "fields": [
+        "headline^2",
+        "short_description"
+      ]
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "party planning",
+      "fields": [
+        "headline^2",
+        "short_description"
+      ],
+      "type": "phrase"
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "match_phrase": {
+      "headline": "Michelle Obama"
+    }
+  },
+  "aggregations": {
+    "category_mentions": {
+      "terms": {
+        "field": "category",
+        "size": 100
+      }
+    }
+  }
+}
+GET news_headlines/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+        "match_phrase": {
+          "headline": "Michelle Obama"
+          }
+         }
+        ],
+       "should":[
+         {
+          "match_phrase": {
+            "category": "BLACK VOICES"
+          }
+        }
+      ]
+    }
+  }
+}
+
+GET news_headlines/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+        "match_phrase": {
+          "headline": "Michelle Obama"
+          }
+         }
+        ],
+       "filter":{
+          "range":{
+             "date": {
+               "gte": "2014-03-25",
+               "lte": "2016-03-25"
+          }
+        }
+      }
+    }
+  }
+}

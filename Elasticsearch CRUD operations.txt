@@ -1,0 +1,12 @@
+You have to name cluser and node something that is meaningful to you
+
+Crud operations are in dropdown under management with dev tools
+
+When indexing document POST or PUT can be used
+POST request creates auto generated ids
+
+PUT will allow you to add a id yourself - not auto generated
+
+You can create an endpoint to provide safeguards for you to prevent you from overwriting data with new data
+
+ELASTICSEARCH does not support JOINS or TRANSACTIONS like SQL

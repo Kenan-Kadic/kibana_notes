@@ -1,0 +1,12 @@
+WHAT EXACTLY HAPPENS WHEN A NODE GOES DOWN?
+Lets say a 50k piece of data open
+
+Copies of original shards called primary shards can be kept on nodes 1 or 2 for example
+
+They can be labled P0 P1 and R0 and R1.
+There are replica shards and they can be backups
+
+Replica shards can also improve the quality of your searches
+
+As your App grows primary shards may have trouble keeping up with the search queries. The R1 and R2 are identical copies of P0 and P1.
+

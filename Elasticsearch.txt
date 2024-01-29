@@ -1,0 +1,27 @@
+What is the ELASTIC STACK
+
+t is a open source platformThis stack includes:
+LOGSTASH
+BEATS
+ELASTICSEARCH
+KIBANA
+
+POPULAR USE CASES:
+Logging
+Metrics
+Security 
+Analysts
+Business Analytics
+
+Blizzard uses Elasticstack to look at logs in video games
+The Mars Curiosity rover sends telemetry data to Elastic 
+Slack uses the Elastic stack in their security operations center to secure communications through their channels
+Tinder uses Elasticstack - Analyze and predict which people humans will swipe right on
+
+If SPEED and RELEVANCE of search matter - you need Elasticsearch
+
+Kibana helps you visualize the data Kibana creates a dashboard to visualize data in graphs and charts.
+
+Elasticsearch runs on nodes - each node has a unique ID and a name. 
+The nodes are part of a cluster. You can have more than 1 node per cluster and they are distributed across several machines.NODES members of a cluster that share a common goalA node can hold dataDATA is stored as documents…meaning a JSON objectSimilar items are grouped into indexes - they say indicies.You might have a produce index and a wine and beer index.Data is stored in shards. Indexes can have multiple shards distributed in nodes.Shard is where documents are stored.
+You can always add more shards and nodes as you get more DATAShard is also where you run search queries.If you have 10 shards across 10 nodes - you can run a 500k search with 50k each shard in 1 secondIf you ran searches in single shards it would take a long time to get results
