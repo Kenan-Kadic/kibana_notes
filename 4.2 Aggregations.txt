@@ -1,0 +1,73 @@
+VIDEO 4.2 Aggregations
+
+Aggregations - Summerizing Data as Metrics, Statistics or Other analytics
+
+This reminds me of GROUP BY in SQL a lot
+
+When you run a search on your index, you will get 10,000 results get
+
+hits is an array that returns the top 10 hits by default
+
+In our current ecommerce dataset each document is a transaction
+
+Here are some aggregation examples
+
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "lowest_unit_price": {
+      "min": {
+        "field": "UnitPrice"
+      }
+    }
+  }
+}
+
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "highest_unit_price": {
+      "max": {
+        "field": "UnitPrice"
+      }
+    }
+  }
+}
+
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "avg_unit_price": {
+      "avg": {
+        "field": "UnitPrice"
+      }
+    }
+  }
+}
+
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "all_stats_unit_price": {
+      "stats": {
+        "field": "UnitPrice"
+      }
+    }
+  }
+}
+
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "number_unique_customers": {
+      "cardinality": {
+        "field": "CustomerID"
+      }
+    }
+  }
+}
