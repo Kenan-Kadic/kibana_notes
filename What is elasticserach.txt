@@ -1,0 +1,35 @@
+Elasticserach is a super powerful serach engine.
+
+It is very fast.
+
+Data is stored as JSON documents.
+
+DATA CAN RUN in multiple nodes--running in multiple servers.
+
+You can add more nodes
+
+Elasticserach stores data as JSON documents.
+
+Elasticsearch has an inverted index.
+
+Elasticsearch is really good at finding where things are / reappear and how often they happen.
+
+Data is saved essentially as a search. It makes things easy to find.
+
+WHAT IS A nodes
+A server running an elastic search instance
+
+Multiple nodes can work on searching data at the same time.
+
+An Index tells us where things are stored. Just look an index in a book almost. It knows exactly where things are. Similar to a book index.
+
+NOW Databases change every second. So how do you update the index?
+
+Initial startup updates the data. Also it updates as new information comes in. If index gets too large, can take a long time to start things up.
+
+Share the load is the key here for everything. That is why Elasticstac is so fast. Sharding is happening.
+
+The more nodes you get the more you have to thinkg about how to monitor them. You may even need a monitoring tool.
+
+
+
