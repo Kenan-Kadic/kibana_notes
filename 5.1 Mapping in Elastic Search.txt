@@ -31,3 +31,19 @@ POST temp_index/_doc
   }
 }
 
+BUT WHAT HAPPENS BEHIND THE SCENES?
+
+Depending on its type, each field is stored differently.
+
+There is a default mapping system called Dynamic Mapping.
+
+There will be a list of all field names and types
+
+A lot of stuff is in alphabetical order in a default index.
+
+if you search the index - the field types are revealed
+
+GET Enter_name_of_the_index_here/_mapping
+
+YOU CAN CUSTOMIZE THE MAPPING
+
